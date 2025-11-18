@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE = process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api'
+const API_BASE = process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api'
 const TOKEN_KEY = 'admin_token'
 const USER_KEY = 'admin_user'
 

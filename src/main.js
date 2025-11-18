@@ -5,7 +5,7 @@ import axios from 'axios'
 // Removed global Tailwind import to prevent style leaks into non-Tailwind pages
 
 // Configure axios
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api'
+axios.defaults.baseURL = process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api'
 axios.defaults.headers.common['Accept'] = 'application/json'
 axios.defaults.withCredentials = false
 

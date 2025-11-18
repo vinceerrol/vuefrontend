@@ -72,7 +72,7 @@ export default {
         formData.append('is_active', '0') // Not active by default
         
         // Upload to backend
-        await axios.post((process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api').replace(/\/$/, '') + '/map', formData, {
+        await axios.post((process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api').replace(/\/$/, '') + '/map', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

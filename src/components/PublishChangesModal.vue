@@ -1248,7 +1248,7 @@ export default {
       if (imagePath.startsWith('http')) {
         return imagePath
       }
-      return `${process.env.VUE_APP_STORAGE_BASE || 'https://isuecampusmap.site/storage/'}${imagePath}`
+      return `${process.env.VUE_APP_STORAGE_BASE || 'https://api.isuecampusmap.site/storage/'}${imagePath}`
     },
     
     getPropertyChanges(building) {

@@ -523,7 +523,7 @@ export default {
       
       try {
         const { default: axios } = await import('axios')
-        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api').replace(/\/$/, '')
+        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api').replace(/\/$/, '')
         const response = await axios.post(`${API_BASE}/auth/otp/send`, {
           email: this.loginForm.email,
           password: this.loginForm.password,
@@ -600,7 +600,7 @@ export default {
       
       try {
         const { default: axios } = await import('axios')
-        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api').replace(/\/$/, '')
+        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api').replace(/\/$/, '')
         const response = await axios.post(`${API_BASE}/auth/otp/verify`, {
           email: this.loginForm.email,
           otp_code: this.otpForm.code,
@@ -974,7 +974,7 @@ export default {
       
       try {
         const { default: axios } = await import('axios')
-        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://isuecampusmap.site/api').replace(/\/$/, '')
+        const API_BASE = (process.env.VUE_APP_API_BASE || 'https://api.isuecampusmap.site/api').replace(/\/$/, '')
         const response = await axios.post(`${API_BASE}/auth/otp/send`, {
           email: this.loginForm.email,
           password: this.loginForm.password,
