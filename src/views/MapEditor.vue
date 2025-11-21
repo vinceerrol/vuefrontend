@@ -1132,7 +1132,7 @@ export default {
     getImageUrl(path) {
       if (!path) return ''
       if (path.startsWith('http')) return path
-      return (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + path
+      return (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + path
     },
     async fetchMaps() {
       try {
@@ -1322,9 +1322,9 @@ export default {
         y_coordinate: building.y_coordinate,
         map_id: building.map_id,
         image: null, // Will be set if user selects a new image
-        image_preview: building.image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + building.image_path : null,
+        image_preview: building.image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + building.image_path : null,
         modal_image: null, // Will be set if user selects a new modal image
-        modal_image_preview: building.modal_image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + building.modal_image_path : null,
+        modal_image_preview: building.modal_image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + building.modal_image_path : null,
         image_width: building.width || 28,
         image_height: building.height || 28,
         employees: building.employees ? building.employees.map(emp => ({
@@ -1334,7 +1334,7 @@ export default {
           department: emp.department || '',
           email: emp.email || '',
           image: null,
-          image_preview: emp.employee_image ? (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + emp.employee_image : null,
+          image_preview: emp.employee_image ? (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + emp.employee_image : null,
           existing_image: emp.employee_image // Store original image path for preservation
         })) : []
       }
@@ -1785,7 +1785,7 @@ export default {
       this.mapForm = { 
         ...map,
         // If the map has an image path, create the complete URL for display
-        image_path: map.image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + map.image_path : null
+        image_path: map.image_path ? (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + map.image_path : null
       }
       this.showAddMapModal = true
     },
@@ -1994,7 +1994,7 @@ export default {
       // The image path is already in the correct format (images/buildings/...)
       // We just need to prefix it with the storage URL
       if (building.image_path) {
-        return (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + building.image_path
+        return (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + building.image_path
       }
       
       // Use a default placeholder image when no image is available
@@ -2053,13 +2053,13 @@ export default {
             const img = new Image()
             img.onload = () => {}
             img.onerror = () => console.error(`❌ Image for building ${apiBldg.id} FAILS to load`)
-            img.src = `${process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/'}${apiBldg.image_path}`
+            img.src = `${process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/'}${apiBldg.image_path}`
         }
         })
         
         // 5. Check Laravel public storage link
         try {
-          const testURL = (process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/') + 'test-access.txt'
+          const testURL = (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + 'test-access.txt'
           await axios.head(testURL)
       } catch (error) {
           console.error('❌ Storage symlink test failed:', error.message)

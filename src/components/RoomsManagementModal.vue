@@ -346,12 +346,12 @@ export default {
 
     getThumbnailUrl(path) {
       if (!path) return null
-      return `${process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/'}${path}`
+      return `${process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/'}${path}`
     },
 
     getPanoramaUrl(path) {
       if (!path) return null
-      return `${process.env.VUE_APP_STORAGE_BASE || 'https://pub-8f04b3acc21148039b85f65e831c54a8.r2.dev/'}${path}`
+      return `${process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/'}${path}`
     }
   }
 }

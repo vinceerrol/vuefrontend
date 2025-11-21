@@ -204,12 +204,24 @@
         <h3>Reset Password</h3>
         <div class="modal-subtitle">{{ resetTarget ? resetTarget.email : '' }}</div>
         <div class="sa-form-row">
-          <input class="input" type="password" v-model="resetForm.new_password" placeholder="New password (min 12 chars)" />
+          <input
+            class="input"
+            type="password"
+            v-model="resetForm.new_password"
+            placeholder="New password (min 12 chars)"
+            minlength="12"
+            required
+            @input="onResetPasswordInput"
+          />
+        </div>
+        <div class="sa-helper-text">Password must be at least 12 characters long.</div>
+        <div v-if="resetForm.new_password && !isResetPasswordValid" class="error-message">
+          Password must be at least 12 characters.
         </div>
         <div v-if="resetError" class="error-message">{{ resetError }}</div>
         <div class="actions">
           <button class="btn btn-secondary" @click="cancelResetPassword">Cancel</button>
-          <button class="btn btn-primary" @click="confirmResetPassword">Reset</button>
+          <button class="btn btn-primary" @click="confirmResetPassword" :disabled="!isResetPasswordValid">Reset</button>
         </div>
       </div>
     </div>
@@ -409,6 +421,9 @@ export default {
         return this.currentUser && admin.id === this.currentUser.id
       }
     },
+    isResetPasswordValid() {
+      return (this.resetForm?.new_password || '').trim().length >= 12
+    },
     
     // Format admin name for display
     formatAdminName() {
@@ -474,6 +489,12 @@ export default {
       }
       
       this.passwordError = ''
+    },
+    onResetPasswordInput() {
+      // Clear existing error once the requirement is met
+      if (this.resetError && this.isResetPasswordValid) {
+        this.resetError = ''
+      }
     },
     
     async create(){
