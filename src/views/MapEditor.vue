@@ -390,16 +390,10 @@ u<template>
             <div v-if="buildingForm.employees && buildingForm.employees.length > 0" class="modern-employees-list">
               <div v-for="(employee, index) in buildingForm.employees" :key="index" class="modern-employee-item">
                 <div class="modern-employee-info">
-                  <div class="modern-employee-avatar">
-                    <img v-if="employee.image_preview" :src="employee.image_preview" alt="Employee Image">
-                    <div v-else class="modern-avatar-placeholder">👤</div>
-                  </div>
                   <div class="modern-employee-details">
                     <input v-model="employee.name" placeholder="Employee Name" class="modern-input employee-input">
                   </div>
                   <div class="modern-employee-actions">
-                    <input type="file" @change="handleEmployeeImageUpload($event, index)" accept="image/*" class="hidden-file-input" :id="`employee-image-${index}`">
-                    <label :for="`employee-image-${index}`" class="modern-btn-secondary camera-btn">📷</label>
                     <button type="button" @click="removeEmployee(index)" class="modern-btn-danger remove-btn">❌</button>
                   </div>
                 </div>
@@ -644,19 +638,10 @@ u<template>
                   :key="emp.id" 
                   class="employee-card"
                 >
-                  <div class="employee-avatar">
-                    <img 
-                      v-if="emp.employee_image" 
-                      :src="getImageUrl(emp.employee_image)" 
-                      :alt="emp.employee_name"
-                      class="avatar-image"
-                    />
-                    <div v-else class="avatar-placeholder">👤</div>
-              </div>
-              <div class="employee-info">
-                <p class="employee-name">{{ emp.employee_name }}</p>
-                <p class="employee-position">
-                  {{ emp.position || '—' }}
+                  <div class="employee-info">
+                    <p class="employee-name">{{ emp.employee_name }}</p>
+                    <p class="employee-position">
+                      {{ emp.position || '—' }}
                   <span v-if="emp.department"> · {{ emp.department }}</span>
                 </p>
                 <p class="employee-email">
@@ -1332,10 +1317,7 @@ export default {
           name: emp.employee_name,
           position: emp.position || '',
           department: emp.department || '',
-          email: emp.email || '',
-          image: null,
-          image_preview: emp.employee_image ? (process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/') + emp.employee_image : null,
-          existing_image: emp.employee_image // Store original image path for preservation
+          email: emp.email || ''
         })) : []
       }
       
@@ -1462,15 +1444,6 @@ export default {
       this.buildingForm.employees.splice(index, 1)
     },
 
-    handleEmployeeImageUpload(event, index) {
-      const file = event.target.files[0]
-      if (!file) return
-      
-      
-      // Set the local reference for later upload and preview
-      this.buildingForm.employees[index].image = file
-      this.buildingForm.employees[index].image_preview = URL.createObjectURL(file)
-    },
 
     // Service Management Methods
     addServices(event) {

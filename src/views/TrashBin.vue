@@ -288,20 +288,9 @@ export default {
         .replace(/^storage\//, '')
         .replace(/^public\//, '')
 
-      // Derive storage base from configured API base
-      // axios.defaults.baseURL looks like: https://<host>/api
-      // We want: https://<host>/storage/<relative> (or matching backend storage path)
-      try {
-        const apiBase = (this.$axios?.defaults?.baseURL) || (typeof axios !== 'undefined' ? axios.defaults.baseURL : '') || ''
-        const u = new URL(apiBase)
-        // Remove trailing /api... (e.g., /api or /api/v1)
-        const basePath = u.pathname.replace(/\/api(?:\/.*)?$/, '')
-        const originAndBase = `${u.origin}${basePath}`.replace(/\/$/, '')
-        return `${originAndBase}/storage/${relative}`
-      } catch (_) {
-        // Fallback to same-origin storage
-        return `/storage/${relative}`
-      }
+      // Use CDN base URL (same as other components)
+      const storageBase = process.env.VUE_APP_STORAGE_BASE || 'https://cdn.isuecampusmap.site/'
+      return `${storageBase}${relative}`
     },
     restoreItem(item) {
       this.itemToRestore = item

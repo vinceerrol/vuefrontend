@@ -162,10 +162,6 @@
                       <div class="employees-list">
                         <div v-for="employee in (building && building?.employees ? building?.employees : [])" :key="employee.id" class="employee-item">
                           <div class="employee-info">
-                            <div class="employee-avatar">
-                              <img v-if="employee.employee_image" :src="getImageUrl(employee.employee_image)" :alt="employee.employee_name" class="employee-image">
-                              <div v-else class="employee-placeholder">👤</div>
-                            </div>
                             <div class="employee-details">
                               <div class="employee-name">{{ employee.employee_name }}</div>
                               <div class="employee-position" v-if="employee.position">{{ employee.position }}</div>
@@ -317,10 +313,6 @@
                       <div class="employees-list">
                         <div v-for="employee in (building && building?.employees ? building?.employees : [])" :key="employee.id" class="employee-item">
                           <div class="employee-info">
-                            <div class="employee-avatar">
-                              <img v-if="employee.employee_image" :src="getImageUrl(employee.employee_image)" :alt="employee.employee_name" class="employee-image">
-                              <div v-else class="employee-placeholder">👤</div>
-                            </div>
                             <div class="employee-details">
                               <div class="employee-name">{{ employee.employee_name }}</div>
                               <div class="employee-position" v-if="employee.position">{{ employee.position }}</div>
@@ -442,10 +434,6 @@
                       <div class="employees-list">
                         <div v-for="employee in (building && building?.employees ? building?.employees : [])" :key="employee.id" class="employee-item">
                           <div class="employee-info">
-                            <div class="employee-avatar">
-                              <img v-if="employee.employee_image" :src="getImageUrl(employee.employee_image)" :alt="employee.employee_name" class="employee-image">
-                              <div v-else class="employee-placeholder">👤</div>
-                            </div>
                             <div class="employee-details">
                               <div class="employee-name">{{ employee.employee_name }}</div>
                               <div class="employee-position" v-if="employee.position">{{ employee.position }}</div>
@@ -570,10 +558,6 @@
                       <div class="employees-list">
                         <div v-for="employee in (building && building?.employees ? building?.employees : [])" :key="employee.id" class="employee-item">
                           <div class="employee-info">
-                            <div class="employee-avatar">
-                              <img v-if="employee.employee_image" :src="getImageUrl(employee.employee_image)" :alt="employee.employee_name" class="employee-image">
-                              <div v-else class="employee-placeholder">👤</div>
-                            </div>
                             <div class="employee-details">
                               <div class="employee-name">{{ employee.employee_name }}</div>
                               <div class="employee-position" v-if="employee.position">{{ employee.position }}</div>
